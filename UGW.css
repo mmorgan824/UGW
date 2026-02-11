@@ -9,11 +9,6 @@ html, body {
   overflow-x: hidden;
 }
 
-.header-logo img {
-  width: 80px;       /* sets width */
-  height: auto;      /* keeps aspect ratio */
-  display: block;    /* removes inline spacing */
-}
 
 body {
   background: #000;
@@ -85,8 +80,18 @@ nav a:hover {
   transform: translateY(-3px);
 }
 
-/* MOBILE */
+/* HEADER LOGO */
+.header-logo img {
+  width: 80px;       /* small default size */
+  height: auto;      /* maintain aspect ratio */
+  display: block;    /* remove inline spacing */
+}
+
+/* MOBILE - scale down logo */
 @media (max-width: 768px) {
+  .header-logo img {
+    width: 60px;     /* smaller logo on mobile */
+  }
 
   nav {
     width: 180px;
@@ -105,11 +110,7 @@ nav a:hover {
     padding-right: 20px;
   }
 }
-@media (max-width: 768px) {
-  .header-logo img {
-    width: 60px;     /* smaller logo on mobile */
-  }
-}
+
 /* PHOTO GALLERY */
 #photos {
   padding: 4rem 2rem;
@@ -260,6 +261,7 @@ footer {
   margin-top: auto; /* pushes to bottom */
   width: 100%;
 }
+
 
 
 
