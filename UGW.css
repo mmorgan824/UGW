@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 body {
   background: #000;
   color: #fff;
@@ -21,8 +26,8 @@ nav {
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 30px;
-  padding-top: 0;            
-  margin-top: 0;          
+  padding-top: 0;
+  margin-top: 0;
   gap: 18px;
 }
 
@@ -48,15 +53,14 @@ nav a:hover {
   gap: 40px;
   padding-top: 40px;
 }
-}
 
 /* LOGO */
 .logo-wrapper video {
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px; /* Responsive instead of fixed 1000px */
   height: auto;
   pointer-events: none;
 }
-
 
 /* SOCIAL LINKS */
 .social-links {
@@ -75,40 +79,24 @@ nav a:hover {
   transform: translateY(-3px);
 }
 
-/* MOBILE */
-/* MOBILE – keep vertical nav */
+/* MOBILE – Keep Same Layout, Just Scale */
 @media (max-width: 768px) {
-  body {
-    flex-direction: row; /* keep sidebar + content side by side */
-  }
 
   nav {
-    width: 220px;                 /* slimmer sidebar */
-    padding: 20px 16px;
-    gap: 14px;
+    width: 180px;        /* slimmer sidebar */
+    padding-left: 16px;
+    gap: 12px;
+  }
 
-    flex-direction: column;       /* FORCE vertical */
-    justify-content: flex-start;
-
-    position: fixed;              /* stay visible */
-    left: 0;
-    top: 0;
-    bottom: 0;
-
-    overflow-y: auto;             /* scroll if too tall */
-    border-right: 1px solid #111;
-    background: #000;
-    z-index: 100;
+  nav a {
+    font-size: 15px;
+    letter-spacing: 1px;
   }
 
   .center,
   section {
-    margin-left: 220px;           /* push content beside nav */
-  }
-
-  nav a {
-    font-size: 16px;              /* scale text for phones */
-    letter-spacing: 1.5px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -141,13 +129,12 @@ nav a:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect */
 .photo-grid img:hover {
   transform: scale(1.03);
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* VLOGS / DOCUMENTARIES GRID */
+/* VLOGS GRID */
 #vlogs {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -170,63 +157,51 @@ nav a:hover {
 
 .vlog-grid iframe {
   width: 100%;
-  height: 200px; /* adjusts automatically on wider screens */
-  aspect-ratio: 16/9; /* keeps YouTube ratio */
+  height: 200px;
+  aspect-ratio: 16/9;
   border-radius: 6px;
 }
- #about {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-      font-family: 'Inter', sans-serif;
-      color: #f0f0f0;
-    }
 
- #about h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ff2d55;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-bottom: 2px solid #ff2d55;
-      padding-bottom: 0.5rem;
-    }
+/* ABOUT */
+#about {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #f0f0f0;
+}
 
- #about ul {
-      list-style: none;
-      padding-left: 0;
-    }
+#about h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ff2d55;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #ff2d55;
+  padding-bottom: 0.5rem;
+}
 
- #about li {
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
+#about ul {
+  list-style: none;
+  padding-left: 0;
+}
 
- #about a {
-      color: #ff2d55;
-      text-decoration: none;
-    }
+#about li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
 
- #about a:hover {
-      text-decoration: underline;
-    }
+#about a {
+  color: #ff2d55;
+  text-decoration: none;
+}
 
- .author {
-      font-weight: bold;
-    }
+#about a:hover {
+  text-decoration: underline;
+}
 
- .year {
-      color: #ccc;
-      margin-left: 0.25rem;
-    }
-
- .title {
-      font-style: italic;
-    }
-
-/* Vertical Connect Form */
-
+/* CONNECT */
 #connect {
   max-width: 600px;
   margin: 3rem auto;
@@ -246,34 +221,21 @@ nav a:hover {
   padding-bottom: 0.5rem;
 }
 
-#connect p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
-/* Contact form vertical stacking */
 .contact-form {
   display: flex;
-  flex-direction: column;   /* stack items vertically */
-  gap: 1.5rem;             /* space between inputs */
+  flex-direction: column;
+  gap: 1.5rem;
   width: 100%;
   margin: auto;
-  text-align: left;         /* labels aligned left */
+  text-align: left;
 }
 
 .form-group {
   display: flex;
-  flex-direction: column;   /* label above input */
+  flex-direction: column;
   width: 100%;
 }
 
-.form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: green;
-}
-
-/* Inputs and textarea full width */
 .contact-form input,
 .contact-form textarea {
   padding: 0.75rem;
@@ -285,12 +247,6 @@ nav a:hover {
   width: 100%;
 }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: #aaa;
-}
-
-/* Submit button */
 .contact-form button {
   background-color: #ff2d55;
   color: #fff;
@@ -307,14 +263,6 @@ nav a:hover {
   background-color: #ff4d77;
 }
 
-/* Footer styling */
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
 /* ARTISTS SECTION */
 #artists {
   max-width: 1100px;
@@ -323,40 +271,18 @@ footer {
   text-align: center;
 }
 
-#artists h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-intro {
-  color: #aaa;
-  margin-bottom: 3rem;
-}
-
-/* HORIZONTAL ARTIST ROW */
 .artist-grid {
   display: flex;
-  gap: 2.5rem;              /* space between circles */
-  align-items: center;       /* vertically center circles */
+  gap: 2.5rem;
+  align-items: center;
   padding: 1rem 1.5rem;
-  overflow-x: auto;          /* allow scroll when too many */
-  flex-wrap: nowrap;         /* prevent wrapping to next line */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Optional: hide scrollbar but keep scroll */
-.artist-grid::-webkit-scrollbar {
-  height: 6px;
-}
-.artist-grid::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
-}
-
-/* CARD SIZE */
 .artist-card {
-  flex: 0 0 250px;           /* fixed width, won’t shrink */
+  flex: 0 0 250px;
   height: 250px;
   border-radius: 50%;
   overflow: hidden;
@@ -373,7 +299,6 @@ footer {
   transition: transform 0.4s ease;
 }
 
-/* Hover overlay stays the same */
 .artist-info {
   position: absolute;
   inset: 0;
@@ -396,4 +321,6 @@ footer {
 .artist-card:hover .artist-info {
   opacity: 1;
 }
+
+
 
