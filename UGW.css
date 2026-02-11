@@ -240,40 +240,6 @@ nav a:hover {
   opacity: 1;
 }
 
-/* HEADER */
-header {
-  display: flex;
-  align-items: center;           /* vertically center logo and nav */
-  justify-content: flex-start;   /* logo on left, nav next */
-  gap: 40px;
-  padding: 10px 20px;
-  background-color: #000;
-  border-bottom: 1px solid #111;
-}
-
-.header-logo video {
-  width: 80px; /* small spinning logo */
-  height: auto;
-  pointer-events: none;
-}
-
-.header-nav {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.header-nav a {
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 1.5px;
-  font-size: 16px;
-  transition: color 0.3s ease;
-}
-
-.header-nav a:hover {
-  color: #ff2d55;
-}
 
 /* FOOTER */
 footer {
@@ -284,4 +250,5 @@ footer {
   margin-top: auto; /* pushes to bottom */
   width: 100%;
 }
+
 
