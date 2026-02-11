@@ -9,6 +9,12 @@ html, body {
   overflow-x: hidden;
 }
 
+.header-logo img {
+  width: 80px;       /* sets width */
+  height: auto;      /* keeps aspect ratio */
+  display: block;    /* removes inline spacing */
+}
+
 body {
   background: #000;
   color: #fff;
@@ -99,7 +105,11 @@ nav a:hover {
     padding-right: 20px;
   }
 }
-
+@media (max-width: 768px) {
+  .header-logo img {
+    width: 60px;     /* smaller logo on mobile */
+  }
+}
 /* PHOTO GALLERY */
 #photos {
   padding: 4rem 2rem;
@@ -250,5 +260,6 @@ footer {
   margin-top: auto; /* pushes to bottom */
   width: 100%;
 }
+
 
 
