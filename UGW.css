@@ -76,29 +76,40 @@ nav a:hover {
 }
 
 /* MOBILE */
+/* MOBILE – keep vertical nav */
 @media (max-width: 768px) {
   body {
-    flex-direction: column;
+    flex-direction: row; /* keep sidebar + content side by side */
   }
 
   nav {
-    width: 200%;
-    flex-direction: row;
-    justify-content: center;
-    padding: 20px 0;
-    border-right: none;
-    border-bottom: 1px solid #111;
-    flex-wrap: wrap;
+    width: 220px;                 /* slimmer sidebar */
+    padding: 20px 16px;
+    gap: 14px;
+
+    flex-direction: column;       /* FORCE vertical */
+    justify-content: flex-start;
+
+    position: fixed;              /* stay visible */
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    overflow-y: auto;             /* scroll if too tall */
+    border-right: 1px solid #111;
+    background: #000;
+    z-index: 100;
   }
-}
 
-html {
-  scroll-behavior: smooth;
-}
+  .center,
+  section {
+    margin-left: 220px;           /* push content beside nav */
+  }
 
-section {
-  min-height: 100vh;
-  padding: 120px 20px;
+  nav a {
+    font-size: 16px;              /* scale text for phones */
+    letter-spacing: 1.5px;
+  }
 }
 
 /* PHOTO GALLERY GRID */
@@ -385,3 +396,4 @@ footer {
 .artist-card:hover .artist-info {
   opacity: 1;
 }
+
