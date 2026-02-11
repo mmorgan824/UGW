@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UGW</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .dvd-logo {
+    position: absolute;
+    width: 150px;
+    cursor: pointer;
+  }
+
+  .dvd-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="dvd-logo" id="logo">
+  <img src="img/UgWrldLogo.png" alt="UGW Logo">
+</a>
+
+<script>
+  const logo = document.getElementById("logo");
+
+  let x = 100;
+  let y = 100;
+  let dx = 2;  // speed horizontal
+  let dy = 2;  // speed vertical
+
+  function animate() {
+    const logoWidth = logo.offsetWidth;
+    const logoHeight = logo.offsetHeight;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    x += dx;
+    y += dy;
+
+    // Bounce on edges
+    if (x + logoWidth >= screenWidth || x <= 0) {
+      dx = -dx;
+    }
+
+    if (y + logoHeight >= screenHeight || y <= 0) {
+      dy = -dy;
+    }
+
+    logo.style.left = x + "px";
+    logo.style.top = y + "px";
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+</body>
+</html>
