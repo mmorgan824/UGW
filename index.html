@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UGW</title>
-
-<style>
+ <style>
   * {
     margin: 0;
     padding: 0;
@@ -21,7 +20,9 @@
 
   .dvd-logo {
     position: absolute;
-    width: 150px;
+    width: 20vw;          /* responsive size */
+    max-width: 180px;     /* prevents it from getting too big */
+    min-width: 100px;     /* prevents it from getting too small */
     cursor: pointer;
   }
 
@@ -29,6 +30,14 @@
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* Extra adjustment for small phones */
+  @media (max-width: 480px) {
+    .dvd-logo {
+      width: 30vw;
+      min-width: 90px;
+    }
   }
 </style>
 </head>
@@ -76,6 +85,7 @@
 
 </body>
 </html>
+
 
 
 
