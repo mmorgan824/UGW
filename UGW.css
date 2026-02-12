@@ -251,6 +251,16 @@ nav a:hover {
   opacity: 1;
 }
 
+.form-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-container iframe {
+  width: 100%;
+  min-height: 100vh;   
+  border: none;
+
 
 /* FOOTER */
 footer {
@@ -261,6 +271,7 @@ footer {
   margin-top: auto; /* pushes to bottom */
   width: 100%;
 }
+
 
 
 
