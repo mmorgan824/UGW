@@ -258,13 +258,13 @@ iframe {
 
 /* FOOTER */
 footer {
+  display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center (if footer has height) */
   text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-top: auto; /* pushes to bottom */
-  width: 100%;
 }
+
+
 
 
 
