@@ -48,16 +48,38 @@
   <img src="img/ugw.png" alt="UGW Logo">
 </a>
 <!-- Hidden YouTube Audio -->
-<iframe 
-  width="0" 
-  height="0" 
-  src="https://youtu.be/_xu3WGorECU?si=FWGPEm0Q58yCNZbF"
-  frameborder="0"
-  allow="autoplay"
-  allowfullscreen
-  style="position:absolute; left:-9999px;">
-</iframe>
+<div id="player" style="position:absolute; left:-9999px;"></div>
 
+<script>
+  let player;
+  let started = false;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'Xgo0IUugs6pPdCod',
+      playerVars: {
+        autoplay: 0,
+        loop: 1,
+        playlist: 'YOUR_VIDEO_ID'
+      }
+    });
+  }
+
+  // Load YouTube API
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+
+  // Start audio on first user interaction
+  document.addEventListener("click", function () {
+    if (!started && player) {
+      player.playVideo();
+      started = true;
+    }
+  });
+</script>
 <script>
   const logo = document.getElementById("logo");
 
@@ -95,6 +117,7 @@
 
 </body>
 </html>
+
 
 
 
