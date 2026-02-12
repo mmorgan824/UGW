@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UGW</title>
- <style>
+
+<style>
   * {
     margin: 0;
     padding: 0;
@@ -20,9 +21,9 @@
 
   .dvd-logo {
     position: absolute;
-    width: 20vw;          /* responsive size */
-    max-width: 180px;     /* prevents it from getting too big */
-    min-width: 100px;     /* prevents it from getting too small */
+    width: 20vw;
+    max-width: 180px;
+    min-width: 100px;
     cursor: pointer;
   }
 
@@ -32,7 +33,6 @@
     display: block;
   }
 
-  /* Extra adjustment for small phones */
   @media (max-width: 480px) {
     .dvd-logo {
       width: 30vw;
@@ -47,46 +47,48 @@
 <a href="Home.html" class="dvd-logo" id="logo">
   <img src="img/ugw.png" alt="UGW Logo">
 </a>
-<!-- Hidden YouTube Audio -->
+
+<!-- Hidden YouTube Audio Player -->
 <div id="player" style="position:absolute; left:-9999px;"></div>
+
+<!-- Load YouTube API properly -->
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
   let player;
   let started = false;
 
+  const videoID = "dQw4w9WgXcQ"; 
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
       height: '0',
       width: '0',
-      videoId: 'Xgo0IUugs6pPdCod',
+      videoId: videoID,
       playerVars: {
         autoplay: 0,
+        controls: 0,
         loop: 1,
-        playlist: 'YOUR_VIDEO_ID'
+        playlist: videoID
       }
     });
   }
 
-  // Load YouTube API
-  const tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.body.appendChild(tag);
-
-  // Start audio on first user interaction
+  // Start audio on first click anywhere
   document.addEventListener("click", function () {
-    if (!started && player) {
+    if (!started && player && player.playVideo) {
       player.playVideo();
       started = true;
     }
   });
 </script>
+
 <script>
   const logo = document.getElementById("logo");
 
   let x = 100;
   let y = 100;
-  let dx = 4;  // speed horizontal
-  let dy = 4;  // speed vertical
+  let dx = 4;
+  let dy = 4;
 
   function animate() {
     const logoWidth = logo.offsetWidth;
@@ -97,7 +99,6 @@
     x += dx;
     y += dy;
 
-    // Bounce on edges
     if (x + logoWidth >= screenWidth || x <= 0) {
       dx = -dx;
     }
@@ -117,12 +118,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
