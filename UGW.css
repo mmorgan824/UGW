@@ -263,35 +263,32 @@ nav a:hover {
 /* ===== POPUP WITH PARAGRAPH ===== */
 .artist-popup {
   position: absolute;
-  top: 50%;             /* position relative to artist-card */
-  left: 110%;           /* place it to the right of the circle */
-  transform: translateY(-50%);
+  top: 50%;            
+  left: 110%;           
+  transform: translateY(-50%) translateX(10px); 
   background: rgba(0, 0, 0, 0.95);
   color: #fff;
   padding: 15px;
-  width: 250px;         /* fixed width */
-  border-radius: 10px;  /* not a circle */
+  width: 250px;         
+  border-radius: 10px;  
   opacity: 0;
-  pointer-events: none; /* prevents accidental hover blocking */
+  pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 10;
 }
 
+/* Hover effect */
 .artist-card:hover .artist-popup {
   opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  transform: translateY(-50%) translateX(0); 
+  pointer-events: auto; 
 }
 
-/* Popup text */
+/* Popup text styling */
 .artist-popup p {
   font-size: 13px;
   line-height: 1.4;
-}
-
-/* Show popup on hover */
-.artist-card:hover .artist-popup {
-  opacity: 1;
-  transform: translateY(0);
+  margin: 0;
 }
 
 /* ===== OPTIONAL: full-screen iframe pages ===== */
@@ -309,6 +306,7 @@ footer {
   align-items: center;      /* vertical center (if footer has height) */
   text-align: center;
 }
+
 
 
 
