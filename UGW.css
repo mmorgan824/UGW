@@ -185,7 +185,6 @@ nav a:hover {
   max-width: 600px;
   text-align: center;
 }
-
 /* ===== ARTISTS SECTION ===== */
 #artists {
   max-width: 1000px;
@@ -197,7 +196,6 @@ nav a:hover {
 .artist-grid {
   display: flex;
   gap: 2.5rem;
-  align-items: center;
   padding: 1rem 1.5rem;
   overflow-x: auto;
   flex-wrap: nowrap;
@@ -216,6 +214,7 @@ nav a:hover {
   transition: transform 0.3s ease;
 }
 
+/* IMAGE */
 .artist-card > img {
   width: 100%;
   height: 100%;
@@ -224,12 +223,7 @@ nav a:hover {
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-.artist-card:hover > img {
-  transform: scale(1.1);
-  filter: brightness(0.4);
-}
-
-/* NAME OVERLAY */
+/* OVERLAY INFO */
 .artist-info {
   position: absolute;
   inset: 0;
@@ -239,22 +233,18 @@ nav a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   text-align: center;
   padding: 1rem;
+  opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-.artist-card:hover .artist-info {
-  opacity: 1;
-}
-
-/* POPUP PARAGRAPH OUTSIDE CIRCLE */
+/* POPUP */
 .artist-popup {
   position: fixed;
   top: 50%;
-  left: 50%; /* outside circle */
-  margin-left: 15px; /* spacing */
+  left: 50%;
+  margin-left: 15px;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.95);
   color: #fff;
@@ -267,19 +257,32 @@ nav a:hover {
   z-index: 20;
 }
 
-.artist-card:hover .artist-popup {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-  pointer-events: auto;
-}
-
 .artist-popup p {
   font-size: 13px;
   line-height: 1.4;
   margin: 0;
 }
 
-/* RESPONSIVE POPUP BELOW CIRCLE */
+/* ===== HOVER / ACTIVE EFFECTS ===== */
+.artist-card:hover > img,
+.artist-card:active > img {
+  transform: scale(1.1);
+  filter: brightness(0.4);
+}
+
+.artist-card:hover .artist-info,
+.artist-card:active .artist-info {
+  opacity: 1;
+}
+
+.artist-card:hover .artist-popup,
+.artist-card:active .artist-popup {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
+}
+
+/* ===== RESPONSIVE POPUP BELOW CIRCLE ===== */
 @media (max-width: 768px) {
   .artist-popup {
     left: 50%;
@@ -287,28 +290,12 @@ nav a:hover {
     transform: translateX(-50%) translateY(0);
   }
 
-  .artist-card:hover .artist-popup {
+  .artist-card:hover .artist-popup,
+  .artist-card:active .artist-popup {
     transform: translateX(-50%) translateY(0);
   }
 }
-/* Touch / mobile support using :active and :focus */
-.artist-card:active > img,
-.artist-card:focus > img {
-  transform: scale(1.1);
-  filter: brightness(0.4);
-}
 
-.artist-card:active .artist-info,
-.artist-card:focus .artist-info {
-  opacity: 1;
-}
-
-.artist-card:active .artist-popup,
-.artist-card:focus .artist-popup {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-  pointer-events: auto;
-}
 /* ===== FULL-SCREEN IFRAMES ===== */
 iframe {
   width: 100%;
@@ -323,6 +310,7 @@ footer {
   align-items: center;
   text-align: center;
 }
+
 
 
 
