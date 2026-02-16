@@ -1,4 +1,3 @@
-
 /* ===== RESET & GLOBAL ===== */
 * {
   margin: 0;
@@ -29,6 +28,8 @@ nav {
   justify-content: flex-start;
   padding-left: 30px;
   gap: 18px;
+  position: fixed; /* Keep nav fixed on side */
+  height: 100vh;
 }
 
 nav a {
@@ -45,6 +46,7 @@ nav a:hover {
 
 /* ===== CENTER CONTENT ===== */
 .center {
+  margin-left: 300px; /* Offset for the fixed nav */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -85,30 +87,6 @@ nav a:hover {
   transform: translateY(-3px);
 }
 
-/* ===== RESPONSIVE LOGO & NAV ===== */
-@media (max-width: 768px) {
-  .header-logo img {
-    width: 60px;
-  }
-
-  nav {
-    width: 180px;
-    padding-left: 16px;
-    gap: 12px;
-  }
-
-  nav a {
-    font-size: 15px;
-    letter-spacing: 1px;
-  }
-
-  .center,
-  section {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
 /* ===== PHOTO GALLERY ===== */
 #photos {
   padding: 4rem 2rem;
@@ -117,7 +95,6 @@ nav a:hover {
 }
 
 #photos h2 {
-  font-family: 'Oswald', sans-serif;
   font-size: 2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -150,14 +127,6 @@ nav a:hover {
   margin: auto;
 }
 
-#vlogs h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
 .vlog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -171,20 +140,6 @@ nav a:hover {
   border-radius: 6px;
 }
 
-/* ===== ABOUT & CONNECT ===== */
-#about,
-#connect {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-  font-family: 'Inter', sans-serif;
-  color: #f0f0f0;
-}
-
-#connect {
-  max-width: 600px;
-  text-align: center;
-}
 /* ===== ARTISTS SECTION ===== */
 #artists {
   max-width: 1000px;
@@ -196,103 +151,129 @@ nav a:hover {
 .artist-grid {
   display: flex;
   gap: 2.5rem;
-  padding: 1rem 1.5rem;
-  overflow-x: auto;
-  flex-wrap: nowrap;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  flex-wrap: wrap;
 }
 
-/* ===== ARTIST CARD ===== */
+/* ===== ARTIST CARD & POPUP FIX ===== */
 .artist-card {
   flex: 0 0 250px;
   height: 250px;
-  border-radius: 50%;
-  overflow: hidden;
   cursor: pointer;
-  position: relative;
+  position: relative; /* Popup is absolute to this */
   transition: transform 0.3s ease;
 }
 
-/* IMAGE */
-.artist-card > img {
+/* Circular container to clip image without clipping the popup */
+.circle-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden; 
+  position: relative;
+  z-index: 2;
+}
+
+.circle-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-/* OVERLAY INFO */
 .artist-info {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 1rem;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-/* POPUP */
+/* THE POPUP PARAGRAPH */
 .artist-popup {
-  position: fixed;
+  position: absolute;
   top: 50%;
-  left: 50%;
-  margin-left: 15px;
+  left: 105%; /* Desktop: Sits to the right */
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid #333;
   color: #fff;
   padding: 15px;
   width: 250px;
   border-radius: 10px;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden;
+  transition: all 0.3s ease;
   z-index: 20;
+  pointer-events: none;
+  text-align: left;
 }
 
 .artist-popup p {
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
   line-height: 1.4;
-  margin: 0;
 }
 
-/* ===== HOVER / ACTIVE EFFECTS ===== */
-.artist-card:hover > img,
-.artist-card:active > img {
+/* HOVER & ACTIVE STATES */
+.artist-card:hover .circle-container img,
+.artist-card.active .circle-container img {
   transform: scale(1.1);
   filter: brightness(0.4);
 }
 
 .artist-card:hover .artist-info,
-.artist-card:active .artist-info {
+.artist-card.active .artist-info {
   opacity: 1;
 }
 
 .artist-card:hover .artist-popup,
-.artist-card:active .artist-popup {
+.artist-card.active .artist-popup {
   opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  visibility: visible;
   pointer-events: auto;
 }
 
-/* ===== RESPONSIVE POPUP BELOW CIRCLE ===== */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-  .artist-popup {
-    left: 50%;
-    top: 110%; /* below circle */
-    transform: translateX(-50%) translateY(0);
+  nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+    gap: 15px;
   }
 
-  .artist-card:hover .artist-popup,
-  .artist-card:active .artist-popup {
-    transform: translateX(-50%) translateY(0);
+  nav a { font-size: 14px; }
+
+  .center { margin-left: 0; padding-top: 20px; }
+
+  .header-logo img { width: 60px; }
+
+  .artist-popup {
+    left: 50%;
+    top: 105%; /* Mobile: Sits below the circle */
+    transform: translateX(-50%);
+  }
+
+  /* Prevent hover conflict on mobile, rely on .active */
+  .artist-card:hover .artist-popup {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .artist-card.active .artist-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
   }
 }
 
@@ -305,10 +286,10 @@ iframe {
 
 /* ===== FOOTER ===== */
 footer {
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 
