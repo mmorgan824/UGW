@@ -255,6 +255,25 @@ iframe {
   width: 100%;
   height: 100vh;
 }
+/* POPUP IMAGE */
+.artist-popup img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
+
+/* SHOW ON HOVER */
+.artist-card:hover .artist-popup {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: dim original image on hover */
+.artist-card:hover img:first-child {
+  filter: brightness(0.35);
+}
 
 /* FOOTER */
 footer {
@@ -263,6 +282,7 @@ footer {
   align-items: center;      /* vertical center (if footer has height) */
   text-align: center;
 }
+
 
 
 
