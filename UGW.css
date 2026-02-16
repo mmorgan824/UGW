@@ -291,7 +291,24 @@ nav a:hover {
     transform: translateX(-50%) translateY(0);
   }
 }
+/* Touch / mobile support using :active and :focus */
+.artist-card:active > img,
+.artist-card:focus > img {
+  transform: scale(1.1);
+  filter: brightness(0.4);
+}
 
+.artist-card:active .artist-info,
+.artist-card:focus .artist-info {
+  opacity: 1;
+}
+
+.artist-card:active .artist-popup,
+.artist-card:focus .artist-popup {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
+}
 /* ===== FULL-SCREEN IFRAMES ===== */
 iframe {
   width: 100%;
@@ -306,6 +323,7 @@ footer {
   align-items: center;
   text-align: center;
 }
+
 
 
 
