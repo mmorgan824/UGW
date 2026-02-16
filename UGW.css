@@ -192,7 +192,8 @@ nav a:hover {
   text-align: center;
 }
 
-/* ARTISTS */
+/* ===== ARTISTS SECTION ===== */
+
 #artists {
   max-width: 1000px;
   margin: 4rem auto;
@@ -200,6 +201,7 @@ nav a:hover {
   text-align: center;
 }
 
+/* Horizontal scroll row */
 .artist-grid {
   display: flex;
   gap: 2.5rem;
@@ -209,6 +211,8 @@ nav a:hover {
   flex-wrap: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+
+/* ===== ARTIST CARD ===== */
 
 .artist-card {
   flex: 0 0 250px;
@@ -220,18 +224,27 @@ nav a:hover {
   transition: transform 0.3s ease;
 }
 
-.artist-card img {
+/* Main artist image */
+.artist-card > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
+
+/* Slight zoom */
+.artist-card:hover > img {
+  transform: scale(1.1);
+  filter: brightness(0.4);
+}
+
+/* ===== NAME OVERLAY (OPTIONAL) ===== */
 
 .artist-info {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.55);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -243,36 +256,55 @@ nav a:hover {
   transition: opacity 0.4s ease;
 }
 
-.artist-card:hover img {
-  transform: scale(1.1);
-}
-
 .artist-card:hover .artist-info {
   opacity: 1;
 }
 
-iframe {
-  width: 100%;
-  height: 100vh;
-}
-/* POPUP IMAGE */
-.artist-popup img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  margin-bottom: 12px;
-  border-radius: 6px;
+/* ===== POPUP WITH PARAGRAPH ===== */
+
+.artist-popup {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
 }
 
-/* SHOW ON HOVER */
+/* Popup image inside */
+.artist-popup img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Popup text */
+.artist-popup p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Show popup on hover */
 .artist-card:hover .artist-popup {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Optional: dim original image on hover */
-.artist-card:hover img:first-child {
-  filter: brightness(0.35);
+/* ===== OPTIONAL: full-screen iframe pages ===== */
+
+iframe {
+  width: 100%;
+  height: 100vh;
+  border: none;
 }
 
 /* FOOTER */
@@ -282,6 +314,7 @@ footer {
   align-items: center;      /* vertical center (if footer has height) */
   text-align: center;
 }
+
 
 
 
