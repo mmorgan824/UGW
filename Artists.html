@@ -116,26 +116,46 @@
 
     </div>
   </section>
-  
-  <script>
-document.querySelectorAll('.artist-card').forEach(card => {
+ <script 
+ document.querySelectorAll('.artist-card').forEach(card => {
+  const popup = card.querySelector('.artist-popup');
+
   card.addEventListener('click', function(e) {
-    // Close other open cards
-    document.querySelectorAll('.artist-card').forEach(c => {
-      if(c !== card) c.classList.remove('hover-active');
+    e.stopPropagation(); // prevent closing immediately
+
+    // Close other popups
+    document.querySelectorAll('.artist-card .artist-popup').forEach(p => {
+      if(p !== popup) {
+        p.style.opacity = 0;
+        p.style.pointerEvents = 'none';
+      }
     });
-    // Toggle this card
-    card.classList.toggle('hover-active');
-  });
-  
-  // Optional: close popup when tapping outside
-  document.addEventListener('click', function(e) {
-    if (!card.contains(e.target)) {
-      card.classList.remove('hover-active');
+
+    // Toggle this popup
+    if(popup.style.opacity === '1') {
+      popup.style.opacity = 0;
+      popup.style.pointerEvents = 'none';
+    } else {
+      const rect = card.getBoundingClientRect();
+      const top = rect.top + rect.height / 2;
+      const left = rect.right + 15; // outside circle to the right
+      popup.style.top = top + 'px';
+      popup.style.left = left + 'px';
+      popup.style.transform = 'translate(0, -50%)';
+      popup.style.opacity = 1;
+      popup.style.pointerEvents = 'auto';
     }
   });
 });
-</script>
+
+// Close popup if clicking outside
+document.addEventListener('click', function() {
+  document.querySelectorAll('.artist-card .artist-popup').forEach(p => {
+    p.style.opacity = 0;
+    p.style.pointerEvents = 'none';
+  });
+});
+ </script>
 
   <!-- FOOTER -->
   <footer>
@@ -144,6 +164,7 @@ document.querySelectorAll('.artist-card').forEach(card => {
 
 </body>
 </html>
+
 
 
 
