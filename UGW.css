@@ -199,9 +199,10 @@ nav a:hover {
   gap: 2.5rem;
   align-items: center;
   padding: 1rem 1.5rem;
-  overflow-x: auto;
+  overflow-x: visible;
   flex-wrap: nowrap;
   -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
 /* ===== ARTIST CARD ===== */
@@ -305,3 +306,4 @@ footer {
   align-items: center;
   text-align: center;
 }
+
