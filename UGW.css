@@ -211,16 +211,14 @@ nav a:hover {
   flex-wrap: nowrap;
   -webkit-overflow-scrolling: touch;
 }
-
 /* ===== ARTIST CARD ===== */
-
 .artist-card {
   flex: 0 0 250px;
   height: 250px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
-  position: relative;
+  position: relative; /* needed for absolute popup */
   transition: transform 0.3s ease;
 }
 
@@ -233,14 +231,13 @@ nav a:hover {
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-/* Slight zoom */
+/* Slight zoom on hover */
 .artist-card:hover > img {
   transform: scale(1.1);
   filter: brightness(0.4);
 }
 
 /* ===== NAME OVERLAY (OPTIONAL) ===== */
-
 .artist-info {
   position: absolute;
   inset: 0;
@@ -263,25 +260,26 @@ nav a:hover {
 /* ===== POPUP WITH PARAGRAPH ===== */
 .artist-popup {
   position: absolute;
-  top: 50%;            
-  left: 110%;           
-  transform: translateY(-50%) translateX(10px); 
+  top: 50%;                      /* vertically center relative to artist card */
+  left: 100%;                     /* place to the right outside the circle */
+  margin-left: 15px;              /* small spacing from circle */
+  transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.95);
   color: #fff;
   padding: 15px;
-  width: 250px;         
-  border-radius: 10px;  
+  width: 250px;
+  border-radius: 10px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 10;
+  z-index: 20;                    /* make sure it’s above other cards */
 }
 
-/* Hover effect */
+/* Show popup on hover */
 .artist-card:hover .artist-popup {
   opacity: 1;
-  transform: translateY(-50%) translateX(0); 
-  pointer-events: auto; 
+  transform: translateY(-50%) translateX(0); /* slide in from right */
+  pointer-events: auto;
 }
 
 /* Popup text styling */
@@ -289,6 +287,19 @@ nav a:hover {
   font-size: 13px;
   line-height: 1.4;
   margin: 0;
+}
+
+/* RESPONSIVE: move popup below on small screens */
+@media (max-width: 768px) {
+  .artist-popup {
+    left: 50%;
+    top: 110%;                   /* place below the circle */
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .artist-card:hover .artist-popup {
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* ===== OPTIONAL: full-screen iframe pages ===== */
@@ -306,6 +317,7 @@ footer {
   align-items: center;      /* vertical center (if footer has height) */
   text-align: center;
 }
+
 
 
 
