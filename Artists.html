@@ -116,6 +116,26 @@
 
     </div>
   </section>
+  
+  <script>
+document.querySelectorAll('.artist-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    // Close other open cards
+    document.querySelectorAll('.artist-card').forEach(c => {
+      if(c !== card) c.classList.remove('hover-active');
+    });
+    // Toggle this card
+    card.classList.toggle('hover-active');
+  });
+  
+  // Optional: close popup when tapping outside
+  document.addEventListener('click', function(e) {
+    if (!card.contains(e.target)) {
+      card.classList.remove('hover-active');
+    }
+  });
+});
+</script>
 
   <!-- FOOTER -->
   <footer>
@@ -124,5 +144,6 @@
 
 </body>
 </html>
+
 
 
