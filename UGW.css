@@ -199,7 +199,7 @@ nav a:hover {
   gap: 2.5rem;
   align-items: center;
   padding: 1rem 1.5rem;
-  overflow-x: visible;
+  overflow-x: auto;
   flex-wrap: nowrap;
   -webkit-overflow-scrolling: touch;
   position: relative;
@@ -306,4 +306,5 @@ footer {
   align-items: center;
   text-align: center;
 }
+
 
