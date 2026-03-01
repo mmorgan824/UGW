@@ -591,7 +591,7 @@ iframe {
 /*===== ABOUT ===== */
 .about-page {
   font-family: 'Inter', sans-serif;
-  background-color: #111;
+  background-color: black;
   color: #fff;
   margin: 0;
 }
@@ -650,4 +650,5 @@ footer {
   text-align: center;
 
 }
+
 
