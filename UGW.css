@@ -637,6 +637,14 @@ iframe {
   margin-bottom: 10px;
 }
 
+/* ===== RECENT ===== */
+#recent h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
 /* ===== FOOTER ===== */
 
 footer {
